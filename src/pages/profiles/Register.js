@@ -29,7 +29,7 @@ const Register = (props) => {
         ) {
             register(form, isLoginHandler).then(() => setLoading(false));
         } else {
-            Swal.fire("Register", "Please fill all fields!", "error");
+            Swal.fire("Register", "Please fill all the fields!", "error");
             setLoading(false);
             return;
         }

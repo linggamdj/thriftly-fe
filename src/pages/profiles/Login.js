@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaUserAlt, FaKey } from "react-icons/fa";
 import logo from "../../assets/hi-logo.png";
 import { login } from "../../axios/userAxios";
+import Swal from "sweetalert2";
 import ReactLoading from "react-loading";
 
 const Login = (props) => {
@@ -18,12 +19,19 @@ const Login = (props) => {
 
     const submitHandler = () => {
         setLoading(true);
-        login(form, loginCbHandler).then(() => {
-            setLoading(false);
-        });
 
-        if (!isLoading) {
-            navigation("/");
+        if (form.username.length && form.password.length) {
+            login(form, loginCbHandler).then(() => {
+                setLoading(false);
+            });
+
+            if (!isLoading) {
+                navigation("/");
+            }
+        } else {
+            Swal.fire("Login", "Please fill all the fields!", "error");
+            setLoading(false);
+            return;
         }
     };
 
