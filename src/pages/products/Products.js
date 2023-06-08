@@ -137,10 +137,7 @@ const Products = () => {
                     </div>
                 </div>
                 <section className="d-flex justify-content-center">
-                    <table
-                        className="table table-bordered text-center mt-2 shadow"
-                        // style={{ borderColor: "#292b2c" }}
-                    >
+                    <table className="table table-bordered text-center mt-2 shadow">
                         <thead className="align-middle">
                             <tr className="bg-main text-primary">
                                 <th>No</th>

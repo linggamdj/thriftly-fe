@@ -39,13 +39,19 @@ const AddModal = (props) => {
     const submitHandler = () => {
         setLoading(true);
 
-        if (form.name && form.new_price && form.second_price && form.stock) {
+        if (
+            form.name.length &&
+            form.new_price &&
+            form.second_price &&
+            form.stock
+        ) {
             addProduct(form).then(() => {
                 setLoading(false);
             });
         } else {
             Swal.fire("Add Item", "Please fill all required fields!", "error");
             setLoading(false);
+            return;
         }
     };
 

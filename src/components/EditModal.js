@@ -45,6 +45,18 @@ const EditModal = (props) => {
     };
 
     const submitHandler = () => {
+        if (
+            !(
+                form.name.length &&
+                form.new_price &&
+                form.second_price &&
+                form.stock
+            )
+        ) {
+            Swal.fire("Add Item", "Please fill all required fields!", "error");
+            return;
+        }
+
         setLoading(true);
 
         if (typeof form.image === "string") {
