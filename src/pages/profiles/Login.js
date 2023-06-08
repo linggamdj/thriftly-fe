@@ -5,6 +5,8 @@ import logo from "../../assets/hi-logo.png";
 import { login } from "../../axios/userAxios";
 import Swal from "sweetalert2";
 import ReactLoading from "react-loading";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Login = (props) => {
     const { loginCbHandler, isLoginHandler } = props;
@@ -129,18 +131,24 @@ const Login = (props) => {
                                 </div>
 
                                 <div className="d-flex justify-content-center mt-2">
-                                    <p>
-                                        Don't have an account?
-                                        <Link
-                                            onClick={() => registerHandler()}
-                                            className="fw-semibold text-decoration-none"
-                                        >
-                                            <span className="sign-link">
-                                                {" "}
-                                                Sign Up
-                                            </span>
-                                        </Link>
-                                    </p>
+                                    {isLoading ? (
+                                        <Skeleton height={36} />
+                                    ) : (
+                                        <p>
+                                            Don't have an account?
+                                            <Link
+                                                onClick={() =>
+                                                    registerHandler()
+                                                }
+                                                className="fw-semibold text-decoration-none"
+                                            >
+                                                <span className="sign-link">
+                                                    {" "}
+                                                    Sign Up
+                                                </span>
+                                            </Link>
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </div>

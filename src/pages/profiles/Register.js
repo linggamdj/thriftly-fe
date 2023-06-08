@@ -5,6 +5,8 @@ import logo from "../../assets/hi-logo.png";
 import Swal from "sweetalert2";
 import { register } from "../../axios/userAxios";
 import ReactLoading from "react-loading";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Register = (props) => {
     const { isLoginHandler } = props;
@@ -180,18 +182,22 @@ const Register = (props) => {
                                 </div>
 
                                 <div className="d-flex justify-content-center mt-2">
-                                    <p>
-                                        Already have an account?
-                                        <Link
-                                            onClick={() => loginHandler()}
-                                            className="fw-semibold text-decoration-none"
-                                        >
-                                            <span className="sign-link">
-                                                {" "}
-                                                Sign In
-                                            </span>
-                                        </Link>
-                                    </p>
+                                    {isLoading ? (
+                                        <Skeleton height={36} />
+                                    ) : (
+                                        <p>
+                                            Already have an account?
+                                            <Link
+                                                onClick={() => loginHandler()}
+                                                className="fw-semibold text-decoration-none"
+                                            >
+                                                <span className="sign-link">
+                                                    {" "}
+                                                    Sign In
+                                                </span>
+                                            </Link>
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </div>

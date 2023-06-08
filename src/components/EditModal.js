@@ -45,7 +45,6 @@ const EditModal = (props) => {
     };
 
     const submitHandler = () => {
-        console.log(form);
         setLoading(true);
 
         if (typeof form.image === "string") {
