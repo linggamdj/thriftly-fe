@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { getUserDetail } from "../axios/userAxios";
 import { APP_URL } from "../helpers/Constants";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Navbar = (props) => {
     const { loginStatus, loginCbHandler } = props;
@@ -18,9 +20,8 @@ const Navbar = (props) => {
 
         getUserDetail((result) => {
             setUser({ ...result });
+            setLoading(false);
         });
-
-        setLoading(false);
     }, []);
 
     const logoutHandler = () => {
@@ -55,7 +56,7 @@ const Navbar = (props) => {
                             </Link>
                             <ul className="dropdown-menu dropdown-menu-end bg-custom">
                                 {isLoading ? (
-                                    <></>
+                                    <Skeleton height={28}></Skeleton>
                                 ) : (
                                     <li className="dropdown-item">
                                         Hi, {user.username}!
