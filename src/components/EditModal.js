@@ -22,7 +22,7 @@ const EditModal = (props) => {
             setForm({ ...result });
             setLoading(false);
         });
-    }, [props.id]);
+    }, [props]);
 
     const uploadHandler = (image) => {
         const imgType = ["image/png", "image/jpeg"];

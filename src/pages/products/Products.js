@@ -17,6 +17,7 @@ import TitleCase from "../../helpers/TitleCase";
 const Products = () => {
     const [items, setItems] = useState([]);
     const [query, setQuery] = useState("");
+    const [currentId, setCurrentId] = useState(0);
     const [isLoading, setLoading] = useState(false);
     const [addModalShow, setAddModalShow] = useState(false);
     const [editModalShow, setEditModalShow] = useState(false);
@@ -70,13 +71,16 @@ const Products = () => {
                         <td>
                             <button
                                 className="btn p-0 mb-1 me-2"
-                                onClick={() => setEditModalShow(true)}
+                                onClick={() => {
+                                    setEditModalShow(true);
+                                    setCurrentId(id);
+                                }}
                             >
                                 <AiFillEdit className="dark-color"></AiFillEdit>
                             </button>
 
                             <EditModal
-                                id={+id}
+                                id={currentId}
                                 show={editModalShow}
                                 onHide={() => setEditModalShow(false)}
                             />
